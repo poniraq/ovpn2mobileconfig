@@ -12,6 +12,9 @@
     "incremental": false,
     "composite": false,
     "rootDir": ".",
-    "outDir": "lib"
+    "outDir": "lib",
+    "paths": {
+      "@root/*": ["./src/*"]
+    }
   }
 }
