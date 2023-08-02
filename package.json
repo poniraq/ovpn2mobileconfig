@@ -1,8 +1,9 @@
 {
   "name": "ovpn2mobileconfig",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "type": "module",
   "description": ".ovpn to .mobileconfig converter",
+  "license": "WTFPL",
   "author": "poniraq@gmail.com",
   "homepage": "https://github.com/poniraq/ovpn2mobileconfig",
   "repository": {
@@ -25,10 +26,11 @@
   ],
   "scripts": {
     "build": "tsup",
+    "build:prod": "tsup --config tsup.config.prod.ts",
+    "prepublish": "pnpm build:prod",
     "format": "prettier --write .",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx,.cjs,.cjsx,.mjs,.mjsx ."
   },
-  "license": "WTFPL",
   "dependencies": {
     "loglevel": "^1.8.1",
     "pretty-data": "^0.40.0",
