@@ -1,6 +1,6 @@
 {
   "name": "ovpn2mobileconfig",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "type": "module",
   "description": "ovpn to mobileconfig converter",
   "main": "lib/index.js",
@@ -11,6 +11,10 @@
     },
     "./package.json": "./package.json"
   },
+  "files": [
+    "lib",
+    "bin"
+  ],
   "scripts": {
     "build": "tsup",
     "format": "prettier --write .",
