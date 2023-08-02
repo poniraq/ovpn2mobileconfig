@@ -1,18 +1,36 @@
 {
   "name": "ovpn2mobileconfig",
   "version": "1.0.3",
+  "type": "module",
   "description": "ovpn to mobileconfig converter",
-  "main": "src/cli.js",
+  "main": "lib/index.mjs",
+  "exports": {
+    ".": {
+      "import": "./lib/index.mjs",
+      "types": "./lib/index.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
   "scripts": {
-    "start": "node src/cli.js"
+    "start": "node src/cli.js",
+    "format": "prettier --write .",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx,.cjs,.cjsx,.mjs,.mjsx ."
   },
   "author": "poniraq@gmail.com",
   "license": "WTFPL",
   "dependencies": {
     "pretty-data": "^0.40.0",
-    "uuid4": "^1.1.4"
+    "uuid4": "^2.0.3"
   },
   "bin": {
-    "ovpn2mobileconfig": "src/cli.js"
+    "ovpn2mobileconfig": "bin/cli.mjs"
+  },
+  "devDependencies": {
+    "@rnx-kit/eslint-plugin": "^0.4.2",
+    "eslint": "^8.46.0",
+    "prettier": "^3.0.0",
+    "typescript": "^5.1.6",
+    "unbuild": "^1.2.1",
+    "vitest": "^0.34.1"
   }
 }
