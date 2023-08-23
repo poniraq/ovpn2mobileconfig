@@ -87,22 +87,18 @@ export function filterCertificateLines(
     if (startTag) {
       logger.info(`Found opening tag "${startTag}"`);
       currentCertificateLines.push(line);
-      continue;
-    }
-
-    if (endTag) {
+    } else if (endTag) {
       logger.info(`Found closing tag "${endTag}"`);
       currentTag = false;
       currentCertificateLines.push(line);
-      continue;
-    }
-
-    if (currentTag) {
+    } else if (currentTag) {
       currentCertificateLines.push(line);
     }
 
-    certificateLines[startTag || endTag || currentTag] =
-      currentCertificateLines;
+    const tag = startTag || endTag || currentTag;
+    if (tag) {
+      certificateLines[tag] = currentCertificateLines;
+    }
   }
 
   return [certificateLines, leftoverLines];
@@ -120,7 +116,7 @@ export default function parseCertificates(
 
     certs[type] = lines
       .map((l) => l.trim())
-      .slice(1, -1)
+      .slice(1, -1) // remove tags
       .join('\\n'); // escaped intentionally
   }
 
