@@ -5,6 +5,7 @@ export enum CertificateType {
   CERT = 'cert',
   KEY = 'key',
   TLS_AUTH = 'tls-auth',
+  TLS_CRYPT = 'tls-crypt',
   CRL_VERIFY = 'crl-verify'
 }
 
@@ -13,6 +14,7 @@ export const certificateTypes = [
   CertificateType.CERT,
   CertificateType.KEY,
   CertificateType.TLS_AUTH,
+  CertificateType.TLS_CRYPT,
   CertificateType.CRL_VERIFY
 ];
 
