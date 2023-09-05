@@ -49,12 +49,24 @@ function isEndTag(line: string): CertificateType | false {
 function _isArmorLine(line: string): boolean {
   let result = false;
 
-  if (line.startsWith('#')) result = true;
   if (line.startsWith('-----')) result = true;
 
   logger.debug({
     line,
     armor: result
+  });
+
+  return result;
+}
+
+function isCommentLine(line: string): boolean {
+  let result = false;
+
+  if (line.trim().startsWith('#')) result = true;
+
+  logger.debug({
+    line,
+    comment: result
   });
 
   return result;
@@ -134,6 +146,7 @@ export default function parseCertificates(
     certs[type] = lines
       .map((l) => l.trim())
       .slice(1, -1) // remove tags
+      .filter((l) => !isCommentLine(l))
       .join('\\n'); // escaped intentionally
   }
 
