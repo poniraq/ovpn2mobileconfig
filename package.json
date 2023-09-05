@@ -1,6 +1,6 @@
 {
   "name": "ovpn2mobileconfig",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "type": "module",
   "description": ".ovpn to .mobileconfig converter",
   "license": "WTFPL",
