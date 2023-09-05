@@ -43,7 +43,10 @@ function isEndTag(line: string): CertificateType | false {
   return false;
 }
 
-function isArmorLine(line: string): boolean {
+/**
+ * @unused
+ */
+function _isArmorLine(line: string): boolean {
   let result = false;
 
   if (line.startsWith('#')) result = true;
@@ -131,7 +134,6 @@ export default function parseCertificates(
     certs[type] = lines
       .map((l) => l.trim())
       .slice(1, -1) // remove tags
-      .filter((l) => !isArmorLine(l))
       .join('\\n'); // escaped intentionally
   }
 
