@@ -1,5 +1,5 @@
 import { filterCertificateLines } from './parse-certificates.js';
-import { filterDirectiveLines } from './parse-directives.js';
+import { filterMetaDirectiveLines } from './parse-meta-directives.js';
 import type { CertificateLines } from './parse-certificates.js';
 
 export default function tokenize(rawText: string) {
@@ -9,7 +9,7 @@ export default function tokenize(rawText: string) {
 
   let lines: string[] = rawText.split('\n').filter((l) => l.trim().length > 0);
   [certificateLines, lines] = filterCertificateLines(lines);
-  [directiveLines, lines] = filterDirectiveLines(lines);
+  [directiveLines, lines] = filterMetaDirectiveLines(lines);
   optionLines = lines;
 
   return {

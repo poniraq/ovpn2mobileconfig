@@ -13,16 +13,25 @@ function addMultipleValues(xmlConfig: string[], key: string, values: string[]) {
   });
 }
 
+function setVodFlag(xmlConfig: string[], isVod: boolean) {
+  addSingleValue(xmlConfig, 'vpn-on-demand', isVod ? '1' : '0');
+}
+
 export default function configToXML(config: ParsedConfig): string {
   const xmlConfig: string[] = [];
 
-  for (const directive in config.directives) {
-    if (!Object.prototype.hasOwnProperty.call(config.directives, directive)) {
+  for (const metaDirective in config.metaDirectives) {
+    if (
+      !Object.prototype.hasOwnProperty.call(
+        config.metaDirectives,
+        metaDirective
+      )
+    ) {
       continue;
     }
 
-    const value = config.directives[directive];
-    addSingleValue(xmlConfig, directive, value);
+    const value = config.metaDirectives[metaDirective];
+    addSingleValue(xmlConfig, metaDirective, value);
   }
 
   for (const option in config.options) {
@@ -47,6 +56,8 @@ export default function configToXML(config: ParsedConfig): string {
 
     addSingleValue(xmlConfig, certType, certificate);
   }
+
+  setVodFlag(xmlConfig, false);
 
   return xmlConfig.join('\n');
 }
