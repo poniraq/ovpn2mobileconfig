@@ -13,7 +13,7 @@ export default function parseOptions(lines: string[]): ParsedOptions {
       .filter((s) => s.length > 0);
 
     if (segments.length === 1) {
-      options[segments[0]] = ['NOARG'];
+      options[segments[0]] = ['NOARGS'];
       continue;
     }
 
